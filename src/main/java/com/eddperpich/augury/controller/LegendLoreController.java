@@ -46,24 +46,24 @@ public class LegendLoreController {
         return characterData.map(player -> new ResponseEntity<>(player, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/characters")
+    @PostMapping("/players")
     public ResponseEntity<Player> createCharacter(@RequestBody Player player) {
         try {
             Player _player = characterRepository
-                    .save(new Player(player.getName(), player.getEntity_id()));
+                    .save(new Player(player.getName(), player.getEntity()));
             return new ResponseEntity<>(_player, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping("/characters/{id}")
+    @PutMapping("/players/{id}")
     public ResponseEntity<Player> updateCharacter(@PathVariable("id") int id, @RequestBody Player player) {
         Optional<Player> characterData = characterRepository.findById(id);
         if (characterData.isPresent()) {
             Player _player = characterData.get();
             _player.setName(player.getName());
-            _player.setEntity_id(player.getEntity_id());
+            _player.setEntity(player.getEntity());
             return new ResponseEntity<>(characterRepository.save(_player), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -80,7 +80,7 @@ public class LegendLoreController {
         }
     }
 
-    @DeleteMapping("/characters")
+    @DeleteMapping("/players")
     public ResponseEntity<HttpStatus> deleteAllCharacters() {
         try {
             characterRepository.deleteAll();
@@ -91,7 +91,7 @@ public class LegendLoreController {
 
     }
 
-    @GetMapping("/characters/{name}")
+    @GetMapping("/players/name/{name}")
     public ResponseEntity<List<Player>> findByPublished(@PathVariable("name") String name) {
         try {
             List<Player> players = characterRepository.findByName(name);

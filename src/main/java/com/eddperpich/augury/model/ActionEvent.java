@@ -1,16 +1,18 @@
 package com.eddperpich.augury.model;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
 @Entity
 @Table(name = "player", schema = "legend")
-public class Player {
+public class ActionEvent {
 
-    public Player(String name, EntityValue entity) {
+    public ActionEvent(String name, EntityValue entity) {
         this.entity = entity;
         this.name = name;
     }
