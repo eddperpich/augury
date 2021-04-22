@@ -1,17 +1,14 @@
-package com.eddperpich.augury.profiles.configuration;
+package com.eddperpich.augury.zprofiles.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+@SuppressWarnings("unused")
 @Configuration
 @ConfigurationProperties("spring.datasource")
-@SuppressWarnings("unused")
 public class DBConfiguration {
-    private String url;
-    private String username;
-    private String password;
     @Profile("local")
     @Bean
     public String localDatabaseConnection() {
