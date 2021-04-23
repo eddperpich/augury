@@ -42,8 +42,8 @@ jobs:
       - name: ls -a via ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
           username: root
+          host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
