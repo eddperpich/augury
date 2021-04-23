@@ -40,11 +40,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ls -a via ssh
-        uses: garygrossgarten/github-action-ssh@release
+        uses: appleboy/ssh-action@master
         with:
-          command: |
-            ls -a
-            echo 'dont stop cummin'
           host: ${{ secrets.SSH_HOST }}
           username: root
-          privateKey: ${{ secrets.PRIVATE_KEY}}
+          key: ${{ secrets.PRIVATE_KEY}}
+          port: 22
+          script: |
+            whoami
+            ls -al
