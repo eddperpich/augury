@@ -42,8 +42,9 @@ jobs:
       - name: ls -a via ssh
         uses: garygrossgarten/github-action-ssh@release
         with:
-          command: ls -a
-          echo 'dont stop cummin'
+          command: |
+            ls -a
+            echo 'dont stop cummin'
           host: ${{ secrets.SSH_HOST }}
           username: root
           privateKey: ${{ secrets.PRIVATE_KEY}}
