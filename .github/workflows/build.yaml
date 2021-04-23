@@ -44,6 +44,6 @@ jobs:
         with:
           command: ls -a
           echo 'dont stop cummin'
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.SSH_HOST }}
           username: root
           privateKey: ${{ secrets.PRIVATE_KEY}}
