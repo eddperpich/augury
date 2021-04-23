@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Run the Gradle package task
-        run: ./gradlew -b build.gradle package
+        run: ./gradlew -b build.gradle test
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
